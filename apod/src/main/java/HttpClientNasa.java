@@ -9,7 +9,8 @@ public class HttpClientNasa {
         HttpClient client = HttpClient.newHttpClient();
         String TokkenNasa = "vyZYn0bdGe6TVO93pkCFXWvaZgFCFFJME9Yv65EM";
         String urlNasaAPOD = "https://api.nasa.gov/planetaty/apod?api_key=";
-        String URL_ = urlNasaAPOD + TokkenNasa;
+        //String URL_ = urlNasaAPOD + TokkenNasa;
+        String URL_ = "https://epic.gsfc.nasa.gov/api/natural";
         // 2. Создаём запрос
         HttpRequest request = HttpRequest.newBuilder()
                 .uri(URI.create(URL_))
@@ -24,6 +25,36 @@ public class HttpClientNasa {
         System.out.println("Status code: " + response.statusCode());
         System.out.println("Headers: " + response.headers().map());
         System.out.println("Body: " + response.body());
-        response.toString();
     }
 }
+// import java.net.InetSocketAddress;
+// import java.net.Proxy;
+
+// import okhttp3.OkHttpClient;
+// import okhttp3.Request;
+// import okhttp3.Response;
+
+// public class HttpClientNasa {
+//     public static void main(String[] args) {
+//         Proxy proxy = new Proxy(Proxy.Type.SOCKS, new InetSocketAddress("123.45.67.89", 1080));
+
+//         OkHttpClient client = new OkHttpClient.Builder()
+//                 .proxy(proxy)
+//                 .build();
+
+//         Request request = new Request.Builder()
+//                 .url("https://httpbin.org/ip")
+//                 .build();
+
+//         try (Response response = client.newCall(request).execute()) {
+//             if (response.isSuccessful() && response.body() != null) {
+//                 System.out.println("IP через прокси: " + response.body().string());
+//             } else {
+//                 System.out.println("Прокси не работает: " + response.code());
+//             }
+//         } catch (Exception e) {
+//             System.out.println("Ошибка подключения — прокси мёртв или заблокирован");
+//             e.printStackTrace();
+//         }
+//     }
+// }
